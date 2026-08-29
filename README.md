@@ -10,6 +10,7 @@
 | [time-ledger](./time-ledger/) 浏览时间账本 | 统计各站点浏览时长，AI 生成「本周注意力去哪了」点评 | ✅ |
 | [retro-skin](./retro-skin/) 网页时光机 | 一键把网页变成 Win98 / 终端绿字 / 像素风 | — |
 | [dark-skin](./dark-skin/) 暗黑皮肤 | 全站自动暗黑，支持 `*tuhu*` 通配排除、暗度和底色可调 | — |
+| [ad-blocker](./ad-blocker/) 净网卫士 | 三层广告拦截：网络规则 + 广告位隐藏 + YouTube 播放器广告快进 | — |
 
 ## 安装
 

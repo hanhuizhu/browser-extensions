@@ -45,6 +45,12 @@ const EXTENSION_CONFIGS = [
     colorTo: [99, 102, 241],
     glyph: 'dot',
   },
+  {
+    dir: 'ad-blocker/icons',
+    colorFrom: [239, 68, 68],
+    colorTo: [127, 29, 29],
+    glyph: 'ban',
+  },
 ];
 
 const CRC_TABLE = buildCrcTable();
@@ -129,6 +135,11 @@ function isGlyphPixel(x, y, size, glyph) {
         }
       }
       return false;
+    }
+    case 'ban': {
+      const inRing = dist <= size * 0.3 && dist >= size * 0.21;
+      const onSlash = Math.abs(x - y) <= size * 0.05 && dist <= size * 0.3;
+      return inRing || onSlash;
     }
     default:
       return false;

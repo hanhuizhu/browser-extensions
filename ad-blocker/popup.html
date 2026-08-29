@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>净网卫士</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 280px;
+      font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      font-size: 13px; color: #1f2733; background: #f6f7fb;
+    }
+    .header {
+      padding: 12px 14px; background: linear-gradient(135deg, #ef4444, #b91c1c);
+      color: #fff; font-size: 14px; font-weight: 600;
+    }
+    .body { padding: 14px; display: flex; flex-direction: column; gap: 12px; }
+    .row { display: flex; justify-content: space-between; align-items: center; }
+    .switch { position: relative; width: 40px; height: 22px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .switch__slider {
+      position: absolute; inset: 0; border-radius: 999px; background: #cbd5e1;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .switch__slider::before {
+      content: ""; position: absolute; left: 3px; top: 3px; width: 16px; height: 16px;
+      border-radius: 50%; background: #fff; transition: transform 0.2s;
+    }
+    .switch input:checked + .switch__slider { background: #ef4444; }
+    .switch input:checked + .switch__slider::before { transform: translateX(18px); }
+    .layers { display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: #5a6472; }
+    .layers li { list-style: none; }
+    .hint { font-size: 11px; color: #98a1ad; line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <div class="header">净网卫士</div>
+  <div class="body">
+    <div class="row">
+      <label>广告拦截</label>
+      <label class="switch">
+        <input type="checkbox" id="enabledSwitch" />
+        <span class="switch__slider"></span>
+      </label>
+    </div>
+    <ul class="layers">
+      <li>🛡 网络层：拦截广告联盟与视频广告接口</li>
+      <li>🧹 样式层：隐藏页面广告位</li>
+      <li>⏩ 播放器层：YouTube 广告自动快进/跳过</li>
+    </ul>
+    <p class="hint">工具栏徽标数字 = 当前页拦截的请求数。切换开关后需刷新页面才能完全生效。</p>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
