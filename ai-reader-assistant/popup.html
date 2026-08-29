@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI 阅读助手</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="popup">
+    <header class="popup__header">
+      <div class="popup__brand">
+        <span class="popup__logo"></span>
+        <span class="popup__title">AI 阅读助手</span>
+      </div>
+      <button id="settingsBtn" class="popup__icon-btn" title="设置">⚙</button>
+    </header>
+
+    <!-- 未配置 API Key 时的引导视图 -->
+    <section id="setupView" class="setup" hidden>
+      <p class="setup__text">首次使用需要配置 DeepSeek API Key</p>
+      <button id="openOptionsBtn" class="btn btn--primary">去配置</button>
+    </section>
+
+    <!-- 主视图 -->
+    <section id="mainView" hidden>
+      <div id="pageInfo" class="page-info" hidden>
+        <div id="pageTitle" class="page-info__title"></div>
+        <div id="pageUrl" class="page-info__url"></div>
+      </div>
+
+      <div id="status" class="status" hidden>
+        <span class="status__spinner"></span>
+        <span id="statusText"></span>
+      </div>
+
+      <div id="errorBox" class="error" hidden></div>
+
+      <article id="summary" class="summary" hidden></article>
+
+      <footer class="popup__footer">
+        <button id="retryBtn" class="btn" hidden>重新总结</button>
+        <button id="copyBtn" class="btn" hidden>复制总结</button>
+      </footer>
+    </section>
+  </div>
+
+  <script src="constants.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

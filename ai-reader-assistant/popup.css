@@ -1,0 +1,219 @@
+/* AI 阅读助手弹窗样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 400px;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: 13px;
+  color: #1f2733;
+  background: #f6f7fb;
+}
+
+.popup {
+  display: flex;
+  flex-direction: column;
+  min-height: 180px;
+  max-height: 560px;
+}
+
+/* 顶部栏 */
+.popup__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  background: linear-gradient(135deg, #5b5ef4, #38bdf8);
+  color: #fff;
+}
+
+.popup__brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.popup__logo {
+  width: 18px;
+  height: 18px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+.popup__title {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.popup__icon-btn {
+  border: none;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.popup__icon-btn:hover {
+  background: rgba(255, 255, 255, 0.32);
+}
+
+/* 引导视图 */
+.setup {
+  padding: 28px 20px;
+  text-align: center;
+}
+
+.setup__text {
+  margin-bottom: 14px;
+  color: #5a6472;
+}
+
+/* 页面信息 */
+.page-info {
+  padding: 10px 14px;
+  background: #fff;
+  border-bottom: 1px solid #eceef3;
+}
+
+.page-info__title {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.page-info__url {
+  margin-top: 2px;
+  font-size: 11px;
+  color: #98a1ad;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 加载状态 */
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px;
+  color: #5a6472;
+}
+
+.status__spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #d6dbe3;
+  border-top-color: #5b5ef4;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 错误提示 */
+.error {
+  margin: 12px 14px;
+  padding: 10px 12px;
+  background: #fdf0f0;
+  border: 1px solid #f5c6c6;
+  border-radius: 8px;
+  color: #b03a3a;
+  line-height: 1.6;
+  word-break: break-all;
+}
+
+/* 总结正文 */
+.summary {
+  padding: 12px 14px;
+  line-height: 1.7;
+  overflow-y: auto;
+  background: #fff;
+}
+
+.summary h3 {
+  margin: 10px 0 4px;
+  font-size: 13px;
+  color: #4548c9;
+}
+
+.summary p {
+  margin: 4px 0;
+}
+
+.summary ul {
+  margin: 4px 0;
+  padding-left: 18px;
+}
+
+.summary li {
+  margin: 3px 0;
+}
+
+.summary strong {
+  color: #4548c9;
+}
+
+.summary code {
+  padding: 1px 4px;
+  background: #f0f1f6;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* 底部操作区 */
+.popup__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #f6f7fb;
+  border-top: 1px solid #eceef3;
+}
+
+.popup__footer:empty,
+.popup__footer:not(:has(.btn:not([hidden]))) {
+  display: none;
+}
+
+/* 按钮 */
+.btn {
+  padding: 6px 14px;
+  border: 1px solid #d6dbe3;
+  border-radius: 8px;
+  background: #fff;
+  color: #1f2733;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  border-color: #5b5ef4;
+  color: #5b5ef4;
+}
+
+.btn--primary {
+  background: #5b5ef4;
+  border-color: #5b5ef4;
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: #4548c9;
+  color: #fff;
+}

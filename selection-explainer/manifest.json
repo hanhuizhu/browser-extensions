@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "划词 AI 助手",
+  "version": "1.0.0",
+  "description": "选中网页任意文字，一键解释、翻译或转成大白话（底层调用 DeepSeek）",
+  "permissions": ["storage"],
+  "host_permissions": ["https://api.deepseek.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "划词 AI 助手（选中网页文字后使用，点击图标打开设置）"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
