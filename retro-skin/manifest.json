@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "网页时光机",
+  "version": "1.0.0",
+  "description": "一键把当前网页变成 Win98 / 终端绿字 / 像素风，纯 CSS 注入，随时恢复",
+  "permissions": ["scripting", "activeTab", "storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "网页时光机"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>网页时光机</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 280px;
+      font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      font-size: 13px; color: #1f2733; background: #f6f7fb;
+    }
+    .header {
+      padding: 12px 14px; background: linear-gradient(135deg, #22c55e, #15803d);
+      color: #fff; font-size: 14px; font-weight: 600;
+    }
+    .themes { padding: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .theme {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      padding: 12px 8px; border: 2px solid #e5e7ef; border-radius: 10px;
+      background: #fff; cursor: pointer; font-size: 12px; transition: all 0.15s;
+    }
+    .theme:hover { border-color: #22c55e; }
+    .theme.is-active { border-color: #22c55e; background: #f0fdf4; font-weight: 600; }
+    .theme__emoji { font-size: 22px; }
+    .restore {
+      grid-column: 1 / -1; flex-direction: row; justify-content: center; gap: 8px; padding: 9px;
+    }
+    .hint { padding: 0 14px 12px; font-size: 11px; color: #98a1ad; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <div class="header">网页时光机</div>
+  <div id="themes" class="themes"></div>
+  <p class="hint">纯 CSS 注入，仅对当前标签页生效，刷新页面自动恢复原状。</p>
+  <script src="constants.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

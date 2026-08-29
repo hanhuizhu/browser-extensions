@@ -7,7 +7,7 @@ const zlib = require('zlib');
 
 const ICON_SIZES = [16, 48, 128];
 
-// 各插件的图标配置：输出目录、渐变色、中心图形（ring 圆环 / dot 实心圆）
+// 各插件的图标配置：输出目录、渐变色、中心图形（ring 圆环 / dot 实心圆 / bars 双横条 / grid 四方格）
 const EXTENSION_CONFIGS = [
   {
     dir: 'ai-reader-assistant/icons',
@@ -19,6 +19,30 @@ const EXTENSION_CONFIGS = [
     dir: 'selection-explainer/icons',
     colorFrom: [168, 85, 247],
     colorTo: [236, 72, 153],
+    glyph: 'dot',
+  },
+  {
+    dir: 'api-inspector/icons',
+    colorFrom: [16, 185, 129],
+    colorTo: [34, 211, 238],
+    glyph: 'bars',
+  },
+  {
+    dir: 'time-ledger/icons',
+    colorFrom: [245, 158, 11],
+    colorTo: [239, 68, 68],
+    glyph: 'ring',
+  },
+  {
+    dir: 'retro-skin/icons',
+    colorFrom: [34, 197, 94],
+    colorTo: [21, 128, 61],
+    glyph: 'grid',
+  },
+  {
+    dir: 'dark-skin/icons',
+    colorFrom: [30, 41, 59],
+    colorTo: [99, 102, 241],
     glyph: 'dot',
   },
 ];
@@ -71,14 +95,44 @@ function drawPixel(x, y, size, config) {
   const b = Math.round(config.colorFrom[2] + (config.colorTo[2] - config.colorFrom[2]) * t);
 
   // 中心白色图形
-  const center = size / 2;
-  const dist = Math.hypot(x - center + 0.5, y - center + 0.5);
-  const isWhite =
-    config.glyph === 'ring' ? dist <= size * 0.3 && dist >= size * 0.17 : dist <= size * 0.22;
-  if (isWhite) {
+  if (isGlyphPixel(x, y, size, config.glyph)) {
     return [255, 255, 255, 255];
   }
   return [r, g, b, 255];
+}
+
+function isGlyphPixel(x, y, size, glyph) {
+  const center = size / 2;
+  const dist = Math.hypot(x - center + 0.5, y - center + 0.5);
+  switch (glyph) {
+    case 'ring':
+      return dist <= size * 0.3 && dist >= size * 0.17;
+    case 'dot':
+      return dist <= size * 0.22;
+    case 'bars': {
+      const inX = x >= size * 0.28 && x <= size * 0.72;
+      const inBarTop = y >= size * 0.32 && y <= size * 0.42;
+      const inBarBottom = y >= size * 0.56 && y <= size * 0.66;
+      return inX && (inBarTop || inBarBottom);
+    }
+    case 'grid': {
+      const square = size * 0.17;
+      const gap = size * 0.05;
+      const offsets = [-square - gap / 2, gap / 2];
+      for (const offsetX of offsets) {
+        for (const offsetY of offsets) {
+          const inX = x >= center + offsetX && x < center + offsetX + square;
+          const inY = y >= center + offsetY && y < center + offsetY + square;
+          if (inX && inY) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+    default:
+      return false;
+  }
 }
 
 function clampToCorner(v, size, radius) {

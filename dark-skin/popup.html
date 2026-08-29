@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>暗黑皮肤</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 300px;
+      font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      font-size: 13px; color: #e5e7eb; background: #16181d;
+    }
+    .header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 14px; background: linear-gradient(135deg, #1e293b, #0f172a);
+      color: #fff; font-size: 14px; font-weight: 600;
+    }
+    .icon-btn {
+      border: none; background: rgba(255,255,255,0.12); color: #fff;
+      width: 26px; height: 26px; border-radius: 6px; font-size: 14px; cursor: pointer;
+    }
+    .icon-btn:hover { background: rgba(255,255,255,0.25); }
+    .body { padding: 14px; display: flex; flex-direction: column; gap: 14px; }
+    .row { display: flex; justify-content: space-between; align-items: center; }
+    .row label { color: #cbd5e1; }
+    /* 开关 */
+    .switch { position: relative; width: 40px; height: 22px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .switch__slider {
+      position: absolute; inset: 0; border-radius: 999px; background: #374151;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .switch__slider::before {
+      content: ""; position: absolute; left: 3px; top: 3px; width: 16px; height: 16px;
+      border-radius: 50%; background: #fff; transition: transform 0.2s;
+    }
+    .switch input:checked + .switch__slider { background: #6366f1; }
+    .switch input:checked + .switch__slider::before { transform: translateX(18px); }
+    /* 滑杆 */
+    .slider-row { display: flex; align-items: center; gap: 10px; }
+    .slider-row input[type="range"] { flex: 1; accent-color: #6366f1; }
+    .slider-row .value { width: 34px; text-align: right; color: #94a3b8; font-size: 12px; }
+    /* 颜色 */
+    input[type="color"] {
+      width: 40px; height: 24px; border: 1px solid #374151; border-radius: 6px;
+      background: transparent; cursor: pointer; padding: 0;
+    }
+    .exclude-btn {
+      width: 100%; padding: 8px; border: 1px solid #374151; border-radius: 8px;
+      background: #1f2430; color: #cbd5e1; font-size: 12px; cursor: pointer;
+    }
+    .exclude-btn:hover { border-color: #6366f1; color: #a5b4fc; }
+    .exclude-btn.is-excluded { border-color: #f59e0b; color: #fbbf24; }
+    .hint { font-size: 11px; color: #64748b; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span>暗黑皮肤</span>
+    <button id="settingsBtn" class="icon-btn" title="排除列表设置">⚙</button>
+  </div>
+
+  <div class="body">
+    <div class="row">
+      <label>全局开启</label>
+      <label class="switch">
+        <input type="checkbox" id="enabledSwitch" />
+        <span class="switch__slider"></span>
+      </label>
+    </div>
+
+    <div class="row">
+      <label>暗度</label>
+    </div>
+    <div class="slider-row">
+      <input type="range" id="strengthRange" min="80" max="100" step="1" />
+      <span id="strengthValue" class="value"></span>
+    </div>
+
+    <div class="row">
+      <label>暗黑底色</label>
+      <input type="color" id="colorPicker" />
+    </div>
+
+    <button id="excludeBtn" class="exclude-btn"></button>
+    <p class="hint">调整实时生效，无需刷新。排除列表支持 *tuhu* 通配写法，点 ⚙ 管理。</p>
+  </div>
+
+  <script src="shared.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

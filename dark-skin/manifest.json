@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "暗黑皮肤",
+  "version": "1.0.0",
+  "description": "给所有网页套上暗黑皮肤：支持按 URL 通配符排除站点（如 *tuhu*），暗度和底色可调",
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["shared.js", "content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "暗黑皮肤"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

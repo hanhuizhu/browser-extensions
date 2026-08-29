@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "接口解说员",
+  "version": "1.0.0",
+  "description": "捕获当前页面的 XHR/Fetch 请求，AI 解说每个接口大概在干嘛（底层调用 DeepSeek）",
+  "permissions": ["webRequest", "storage", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "接口解说员"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

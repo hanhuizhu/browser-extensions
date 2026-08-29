@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>浏览时间账本</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 400px;
+      font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      font-size: 13px; color: #1f2733; background: #f6f7fb;
+    }
+    .header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 14px; background: linear-gradient(135deg, #f59e0b, #ef4444); color: #fff;
+    }
+    .header__title { font-size: 14px; font-weight: 600; }
+    .header__total { font-size: 11px; opacity: 0.92; margin-top: 2px; }
+    .icon-btn {
+      border: none; background: rgba(255,255,255,0.18); color: #fff;
+      width: 26px; height: 26px; border-radius: 6px; font-size: 14px; cursor: pointer;
+    }
+    .icon-btn:hover { background: rgba(255,255,255,0.32); }
+    .tabs { display: flex; gap: 6px; padding: 10px 12px 0; }
+    .tab {
+      padding: 4px 14px; border: 1px solid #e5e7ef; border-radius: 999px;
+      background: #fff; font-size: 12px; cursor: pointer; color: #5a6472;
+    }
+    .tab.is-active { background: #f59e0b; border-color: #f59e0b; color: #fff; font-weight: 600; }
+    .list { max-height: 280px; overflow-y: auto; padding: 8px 12px; }
+    .empty { padding: 24px 0; text-align: center; color: #98a1ad; }
+    .site { margin-bottom: 8px; }
+    .site__row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 3px; }
+    .site__host { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .site__time { color: #98a1ad; flex-shrink: 0; margin-left: 8px; }
+    .site__bar-track { height: 6px; background: #eceef3; border-radius: 3px; overflow: hidden; }
+    .site__bar { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #f59e0b, #ef4444); }
+    .result {
+      margin: 4px 12px 10px; padding: 10px 12px; background: #fff;
+      border: 1px solid #e5e7ef; border-radius: 10px; line-height: 1.7;
+      max-height: 220px; overflow-y: auto;
+    }
+    .result h3 { margin: 8px 0 4px; font-size: 13px; color: #d97706; }
+    .result p { margin: 4px 0; }
+    .result ul { margin: 4px 0; padding-left: 18px; }
+    .result strong { color: #d97706; }
+    .error {
+      margin: 4px 12px 10px; padding: 8px 10px; background: #fdf0f0;
+      border: 1px solid #f5c6c6; border-radius: 8px; color: #b03a3a; word-break: break-all;
+    }
+    .footer { display: flex; justify-content: flex-end; padding: 0 12px 12px; }
+    .btn {
+      padding: 6px 14px; border: none; border-radius: 8px;
+      background: #f59e0b; color: #fff; font-size: 12px; cursor: pointer;
+    }
+    .btn:hover { background: #d97706; }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div>
+      <div class="header__title">浏览时间账本</div>
+      <div id="totalText" class="header__total"></div>
+    </div>
+    <button id="settingsBtn" class="icon-btn" title="设置">⚙</button>
+  </div>
+
+  <div class="tabs">
+    <button id="todayTab" class="tab is-active">今日</button>
+    <button id="weekTab" class="tab">近 7 天</button>
+  </div>
+
+  <div id="list" class="list"></div>
+  <div id="errorBox" class="error" hidden></div>
+  <article id="result" class="result" hidden></article>
+
+  <div class="footer">
+    <button id="reportBtn" class="btn">AI 周报点评</button>
+  </div>
+
+  <script src="constants.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

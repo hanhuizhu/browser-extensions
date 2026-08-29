@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "浏览时间账本",
+  "version": "1.0.0",
+  "description": "统计各网站的浏览时长，AI 生成「本周注意力去哪了」点评（底层调用 DeepSeek）",
+  "permissions": ["tabs", "alarms", "idle", "storage"],
+  "host_permissions": ["https://api.deepseek.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "浏览时间账本"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

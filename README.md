@@ -2,10 +2,14 @@
 
 自用 Chrome 插件集合，底层统一调用 DeepSeek API（默认模型 `deepseek-v4-flash-vision-exp`），全部零依赖、零构建，开发者模式加载即用。
 
-| 插件 | 功能 |
-|------|------|
-| [ai-reader-assistant](./ai-reader-assistant/) AI 阅读助手 | 点击图标一键总结当前网页：一句话概括 / 核心要点 / 适合谁读 |
-| [selection-explainer](./selection-explainer/) 划词 AI 助手 | 选中网页文字，浮出气泡做解释 / 翻译 / 大白话 |
+| 插件 | 功能 | AI |
+|------|------|-----|
+| [ai-reader-assistant](./ai-reader-assistant/) AI 阅读助手 | 点击图标一键总结当前网页：一句话概括 / 核心要点 / 适合谁读 | ✅ |
+| [selection-explainer](./selection-explainer/) 划词 AI 助手 | 选中网页文字，浮出气泡做解释 / 翻译 / 大白话 | ✅ |
+| [api-inspector](./api-inspector/) 接口解说员 | 捕获页面 XHR/Fetch 请求，AI 解说每个接口在干嘛 | ✅ |
+| [time-ledger](./time-ledger/) 浏览时间账本 | 统计各站点浏览时长，AI 生成「本周注意力去哪了」点评 | ✅ |
+| [retro-skin](./retro-skin/) 网页时光机 | 一键把网页变成 Win98 / 终端绿字 / 像素风 | — |
+| [dark-skin](./dark-skin/) 暗黑皮肤 | 全站自动暗黑，支持 `*tuhu*` 通配排除、暗度和底色可调 | — |
 
 ## 安装
 
